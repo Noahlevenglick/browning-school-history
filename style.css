@@ -1,0 +1,105 @@
+:root {
+    --bg-color: #111111;
+    --text-color: #FFFFFF;
+    --primary-red: #B91C1C; /* A deep, bold red */
+    --border-color: #444444;
+    --card-bg: #1A1A1A;
+    --highlight-color: rgba(185, 28, 28, 0.2);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+.text-primary-red { color: var(--primary-red); }
+.bg-primary-red { background-color: var(--primary-red); }
+.border-primary-red { border-color: var(--primary-red); }
+
+.section-divider { border-bottom: 1px solid var(--border-color); }
+
+.document-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+.document-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+.document-card.highlighted {
+    background-color: var(--highlight-color);
+    border-color: var(--primary-red);
+}
+
+.doc-ref {
+    color: var(--primary-red);
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.doc-ref:hover {
+    color: #FFFFFF;
+}
+
+.accordion-header {
+    cursor: pointer;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+.accordion-header:hover {
+    background-color: #2a2a2a;
+}
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+    padding: 0 1rem;
+    border-left: 2px solid var(--border-color);
+    margin-left: 0.5rem;
+}
+.accordion-content.open {
+    max-height: 1000px; /* Adjust as needed */
+    padding: 1.5rem 1rem;
+}
+.accordion-arrow {
+    transition: transform 0.3s ease;
+}
+.accordion-header.open .accordion-arrow {
+    transform: rotate(90deg);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+}
+
+/* Timeline Scrubber Styles */
+.scrubber-link {
+    color: #9CA3AF; /* gray-400 */
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-bottom: 4px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.scrubber-link:hover {
+    color: #FFFFFF;
+}
+.scrubber-link.active {
+    color: #FFFFFF;
+    border-bottom-color: var(--primary-red);
+}
